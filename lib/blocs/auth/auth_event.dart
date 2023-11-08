@@ -13,6 +13,7 @@ class AuthSignInWithEmailPassword extends AuthEvent {
   final String email;
   final String password;
 
+
   const AuthSignInWithEmailPassword({
     required this.email,
     required this.password,

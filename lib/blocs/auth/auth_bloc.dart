@@ -1,3 +1,4 @@
+// auth_bloc.dart
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -28,7 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void onSignInWithEmailPassword(
-    AuthSignInWithEmailPassword event, Emitter<AuthState> emit) async {
+      AuthSignInWithEmailPassword event, Emitter<AuthState> emit) async {
     try {
       final result = await _auth.signInWithEmailAndPassword(
         email: event.email,
@@ -39,15 +40,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthAuthenticated(user: result.user!));
       } else {
         emit(AuthUnauthenticated());
+        emit(AuthInvalidCredentials()); // Emit AuthInvalidCredentials
       }
     } catch (e) {
       emit(AuthError(message: e.toString()));
     }
   }
 
-  void onSignOut(
-    AuthSignOut event, Emitter<AuthState> emit
-  ) async {
+  void onSignOut(AuthSignOut event, Emitter<AuthState> emit) async {
     try {
       await _auth.signOut();
       emit(AuthUnauthenticated());
@@ -55,5 +55,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthError(message: e.toString()));
     }
   }
-
 }
