@@ -39,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.add), // Icon for Create Semesters
-            label: 'Create Semestres',
+            label: 'Materias',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.home), // Icon for Home

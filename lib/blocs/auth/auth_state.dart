@@ -13,7 +13,7 @@ class AuthAuthenticated extends AuthState {
   final User user;
 
   const AuthAuthenticated({required this.user});
-
+oouio
   @override
   List<Object> get props => [user];
 }
